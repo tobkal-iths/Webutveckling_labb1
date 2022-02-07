@@ -1,28 +1,34 @@
 // Variables
 const courses = [];
+const cart = [];
+
+// Classes
+class course {
+    constructor(id, title, img, imgalt, pitch, info, length, price, active, purchases) {
+        this.id = id;
+        this.title = title;
+        this.img = img;
+        this.imgalt = imgalt;
+        this.pitch = pitch;
+        this.info = info;
+        this.length = length;
+        this.price = price;
+        this.active = active;
+        this.purchases = purchases;
+    }
+}
 
 // On load
 onload = function() {
     navigate('pages/start.html');
     loadCourses();
-}
-
-// Navigation
-async function navigate(path, callback1 = null, callback2 = null) {
-    await fetch(path)
-    .then(data => data.text())
-    .then(html => document.getElementById('contentArea').innerHTML = html);
-
-    if (callback1 !== null) {
-        
-        callback1();
-        if (callback2 !== null) callback2();
-    }
+    updateCartText();
 }
 
 // Load courses
 async function loadCourses() {
     let response = await fetch('json/courses.json');
+    console.log(response);
 
     if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
@@ -39,29 +45,103 @@ function jsonToCourses(json) {
     }
 }
 
+// Navigation
+async function navigate(path, callback1 = null, callback2 = null) {
+    await fetch(path)
+    .then(data => data.text())
+    .then(html => document.getElementById('contentArea').innerHTML = html);
+
+    if (callback1 !== null) {
+        callback1();
+        if (callback2 !== null) callback2();
+    }
+}
+
 //Make popular course cards
 function makePopularCards() {
     let html = '';
-    console.log(`courses: ${courses}`);
     let tmp = courses.sort(function(a, b){return b.purchases-a.purchases}).slice(0, 3);
-    console.log(`tmp: ${tmp}`);
     for (let i = 0; i < tmp.length; i++) {
         html += makeCourseCard(tmp[i]);
     }
-    console.log(`html: ${html}`);
     document.getElementById('popular-cards').innerHTML = html;
 }
 
-//Make ongoing course cards
-function makeOngoingCards() {
+//Make active course cards
+function makeActiveCards() {
     let html = '';
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].ongoing == true) html += makeCourseCard(courses[i]);
+        if (courses[i].active) html += makeCourseCard(courses[i]);
     }
-    document.getElementById('ongoing-cards').innerHTML = html;
+    document.getElementById('active-cards').innerHTML = html;
 }
 
 //Make course card
 function makeCourseCard(course) {
-    return `<div class="card"><h1>${course.name}</h1><img src="${course.img}" alt="${course.imgalt}"><h2>${course.pitch}</h2><p>${course.info}</p><p class="card-signature">fr. ${course.price} spänn</p></div>`
+    return `<div class="card">
+        <h1>${course.title}</h1>
+        <p class="card-length">Kurslängd: ${course.length} veckor.</p>
+        <img src="${course.img}" alt="${course.imgalt}">
+        <h2>${course.pitch}</h2>
+        <p>${course.info}</p>
+        <button class="card-btn" onclick="addCourseToCart(${course.id})" type="button" ${course.active ? '>Köp' : 'disabled>Ej tillgänglig'}</button>
+        <p class="card-signature">fr. ${course.price} spänn</p>
+    </div>`;
+}
+
+//Make cart items
+function makeCartItems() {
+    let html = '';
+    for (let i = 0; i < cart.length; i++) {
+        html += makeCartItem(cart[i]);
+    }
+    document.getElementById('cart-list').innerHTML = html;
+}
+
+//Make cart item
+function makeCartItem(id) {
+    let course = courses.find(c => c.id === id)
+    return `
+    <div class="cart-item">
+        <p>${course.title}</p>
+        <p>${course.price}</p>
+        <button class="cart-btn" onclick="removeCourseFromCart(${id})" type="button">Ta bort från kundvagn</button>
+    </div>`;
+}
+
+// Add course to cart
+function addCourseToCart(id) {
+    if (cart.includes(id)) {
+        alert('Du har redan lagt till den kursen i kundvagnen.');
+    } else {
+        cart.push(id);
+    }
+    updateCartText();
+}
+
+// Remove course from cart
+function removeCourseFromCart(id) {
+    if (cart.includes(id)) {
+        cart.splice(cart.indexOf(id), 1);
+        updateCartText();
+        makeCartItems();
+    }
+}
+
+//Update cart button text
+function updateCartText() {
+    document.getElementById('cart-btn').innerHTML = `Kundvagn (${cart.length})`
+}
+
+// Add course to cart
+function addNewCourse() {
+    alert('Lägg till ny kurs');
+}
+
+// Add course to cart
+function finalizePurchase() {
+    cart.length = 0;
+    updateCartText();
+    makeCartItems();
+    alert('Tack för köpet!');
 }

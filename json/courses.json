@@ -1,62 +1,74 @@
 [
     {
-        "name": "Göteborgs-humor",
+        "id": 1,
+        "title": "Göteborgs-humor",
         "img": "img/course1.avif",
         "imgalt": "Göteborgs centralstation",
         "pitch": "Har du svårt att förstå vem \"Kal\" är eller hur du hittar till \"Ackordcentralen\"?",
         "info": "En kurs i elva lektioner som går igenom allt ifrån den klassiska \"Göteborgsvitsen\" till hur du på äkta Göteborg-manér kan klämma ur dig fyndiga namn på det mesta.",
+        "length": 11,
         "price": 1999,
-        "purchases": 200,
-        "ongoing": false
+        "active": false,
+        "purchases": 200
     },
     {
-        "name": "Lär dig tala som en öbo",
+        "id": 2,
+        "title": "Lär dig tala som en öbo",
         "img": "img/course2.avif",
         "imgalt": "Bohusläns skärgård",
         "pitch": "En kurs för dig som älskar havet men avskyr hårda konsonanter.",
         "info": "Kursen kommer i fem episoder där varje del riktar in sig på en av de fem pelarna av den bohuslänska dialekten: Uttal, betoning, känsla, stil och kroppsspråk.",
+        "length": 5,
         "price": 999,
-        "purchases": 195,
-        "ongoing": true
+        "active": true,
+        "purchases": 195
     },
     {
-        "name": "Hyfs",
+        "id": 3,
+        "title": "Hyfs",
         "img": "img/course3.avif",
         "imgalt": "Stilig man i mustasch",
         "pitch": "Har du svårt att uppföra dig som en normalt funtad människa?",
         "info": "I den här kursen får du lära dig allt från hur man äter med bestick till varför man inte bör tränga sig före i kassakön.",
+        "length": 2,
         "price": 99,
-        "purchases": 187,
-        "ongoing": true
+        "active": true,
+        "purchases": 180
     },
     {
-        "name": "Test1",
-        "img": "img/course3.avif",
-        "imgalt": "",
-        "pitch": "Test 1",
-        "info": "Testing testing",
+        "id": 4,
+        "title": "Testkurs 1",
+        "img": "img/placeholder.avif",
+        "imgalt": "Placeholder",
+        "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+        "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",
+        "length": 1,
         "price": 0,
-        "purchases": 4,
-        "ongoing": true
+        "active": true,
+        "purchases": 4
     },
     {
-        "name": "Test2",
-        "img": "img/course3.avif",
-        "imgalt": "",
-        "pitch": "Test 2",
-        "info": "Testing testing testing",
+        "id": 5,
+        "title": "Testkurs 2",
+        "img": "img/placeholder.avif",
+        "imgalt": "Placehodler",
+        "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+        "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",
+        "length": 1,
         "price": 0,
-        "purchases": 2,
-        "ongoing": true
+        "active": true,
+        "purchases": 2
     },
     {
-        "name": "Test3",
-        "img": "img/course3.avif",
-        "imgalt": "",
-        "pitch": "Test 3",
-        "info": "Testing testing testing",
+        "id": 6,
+        "title": "Testkurs 3",
+        "img": "img/placeholder.avif",
+        "imgalt": "Placeholder",
+        "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+        "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",
+        "length": 1,
         "price": 0,
-        "purchases": 1,
-        "ongoing": true
+        "active": true,
+        "purchases": 1
     }
 ]
