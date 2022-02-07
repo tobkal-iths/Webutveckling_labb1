@@ -143,11 +143,11 @@
 html {
     background-color: var(--background);
     color: var(--light);
-    overflow: scroll;
     font-family: 'Cantarell', sans-serif;
 }
 
 body {
+    overflow-x: hidden;
     margin: 0%;
     padding: 0%;
 }
@@ -156,6 +156,11 @@ body {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
+}
+
+.bottom {
+    top: auto;
+    bottom: 0;
 }
 
 .grid-container {
@@ -236,6 +241,15 @@ p {
 .welcome-message {
     font-size: 1.5em;
     margin-bottom: -2%;
+}
+
+/* Links */
+a {
+    color: var(--dark);
+}
+
+a:hover {
+    color: var(--muted);
 }
 
 /*****************/
@@ -466,12 +480,35 @@ p {
 /* CARDS */
 /*****************/
 
+.card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    grid-auto-columns: minmax(0, 1fr);
+}
+
+.card-section > * {
+    margin: auto;
+}
+
 .card {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     color: var(--background);
     background-color: var(--primary);
     border-radius: 5px;
     margin: 1em;
     padding: 0em 2em 1em;
+}
+
+.card > img {
+    margin: 0% auto;
+    width: 100%;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--muted-primary);
 }
 
 .card > h1 {
@@ -481,29 +518,20 @@ p {
     border-bottom: 2px solid var(--muted-primary);
 }
 
-.card > img {
-    width: 100%;
-    border-radius: 5px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--muted-primary);
-}
-
 .card > h2 {
+    margin-bottom: 0%;
     font-size: 1.4em;
 }
 
 .card .card-signature {
+    align-self: flex-end;
     text-align: right;
     font-weight: bold;
     font-size: 1em;
     padding-right: 0.2em;
-}
-
-.card-section {
-    display: grid;
-    grid-auto-columns: minmax(0, 1fr);
-    grid-auto-flow: row;
+    margin-bottom: 0%;
+    padding-top: auto;
+    margin-top: auto;
 }
 
 .link-card {
@@ -523,40 +551,54 @@ p {
     position: sticky;
     bottom: 0;
     text-align: center;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    list-style-type: none;
     width: 100%;
     color: var(--muted);
     background-color: var(--primary);
+    padding: 0%;
+}
+
+.footer-header .filler {
+    display: none;
+}
+
+.footer a:hover {
+    color: var(--primary);
 }
 
 .footer-header p {
     /* font-family: 'Cormorant SC', serif; */
     font-family: 'Rokkitt', serif;
     font-weight: bold;
-    margin: auto 0% auto auto;
+    font-size: small;
+    width: 100%;
+    margin: auto;
     padding: 0%;
     text-align: center;
 }
 
-.footer-header ul {
-    display: flex;
-    margin: 0% 0% 0% auto;
-    padding: 0%;
-    flex-direction: row;
-    list-style-type: none;
+.footer-header > ul {
+    text-align: right;
+    justify-self: flex-end;
+    margin: 0;
+}
+
+.footer-header > ul > li {
+    display: inline-block;
 }
 
 .footer {
-    display: block;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     color: var(--muted);
     background-color: var(--muted-primary);
 }
 
-.footer .grid-container {
-    grid-auto-columns: minmax(0, 1fr);
-    grid-auto-flow: column;
+.footer > ul {
+    text-align: center;
+    width: calc(100%/3 - 10px);
 }
 
 .footer .footer-body {
@@ -578,6 +620,7 @@ p {
 }
 
 .footer .footer-footer {
+    align-self: flex-end;
     text-align: center;
 }
 
@@ -618,11 +661,9 @@ Extra large devices (large laptops and desktops, 1200px and up)
         width: 35vh;
     }
 
-    /*     FOOTER      */
-    .footer-header .grid-item {
-        min-width: 15%;
+    .footer-header > p {
+        font-size: medium;
     }
-    
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -688,13 +729,27 @@ Extra large devices (large laptops and desktops, 1200px and up)
     .card > img {
         width: 80%;
     }
+
+    /*     FOOTER      */
+    .footer-header {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .footer-header .filler {
+        display: block;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .card-section {
-        grid-auto-columns: minmax(0, 1fr);
-        grid-auto-flow: column;
+        /* grid-template-columns: repeat(3, 33%);
+        grid-auto-columns: minmax(0, 1fr); */
+    }
+
+    .card-section > * {
+        max-width: calc(100% / 3 - 10px);
+        margin: auto;
     }
 
     .card {

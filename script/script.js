@@ -7,3 +7,4 @@ function navigate(path) {
     .then(data => data.text())
     .then(html => document.getElementById('contentArea').innerHTML = html);
 }
+
