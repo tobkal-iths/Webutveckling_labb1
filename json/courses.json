@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Göteborgs-humor",
+        "img": "img/course1.avif",
+        "imgalt": "Göteborgs centralstation",
+        "pitch": "Har du svårt att förstå vem \"Kal\" är eller hur du hittar till \"Ackordcentralen\"?",
+        "info": "En kurs i elva lektioner som går igenom allt ifrån den klassiska \"Göteborgsvitsen\" till hur du på äkta Göteborg-manér kan klämma ur dig fyndiga namn på det mesta.",
+        "price": 1999,
+        "purchases": 200,
+        "ongoing": false
+    },
+    {
+        "name": "Lär dig tala som en öbo",
+        "img": "img/course2.avif",
+        "imgalt": "Bohusläns skärgård",
+        "pitch": "En kurs för dig som älskar havet men avskyr hårda konsonanter.",
+        "info": "Kursen kommer i fem episoder där varje del riktar in sig på en av de fem pelarna av den bohuslänska dialekten: Uttal, betoning, känsla, stil och kroppsspråk.",
+        "price": 999,
+        "purchases": 195,
+        "ongoing": true
+    },
+    {
+        "name": "Hyfs",
+        "img": "img/course3.avif",
+        "imgalt": "Stilig man i mustasch",
+        "pitch": "Har du svårt att uppföra dig som en normalt funtad människa?",
+        "info": "I den här kursen får du lära dig allt från hur man äter med bestick till varför man inte bör tränga sig före i kassakön.",
+        "price": 99,
+        "purchases": 187,
+        "ongoing": true
+    },
+    {
+        "name": "Test1",
+        "img": "img/course3.avif",
+        "imgalt": "",
+        "pitch": "Test 1",
+        "info": "Testing testing",
+        "price": 0,
+        "purchases": 4,
+        "ongoing": true
+    },
+    {
+        "name": "Test2",
+        "img": "img/course3.avif",
+        "imgalt": "",
+        "pitch": "Test 2",
+        "info": "Testing testing testing",
+        "price": 0,
+        "purchases": 2,
+        "ongoing": true
+    },
+    {
+        "name": "Test3",
+        "img": "img/course3.avif",
+        "imgalt": "",
+        "pitch": "Test 3",
+        "info": "Testing testing testing",
+        "price": 0,
+        "purchases": 1,
+        "ongoing": true
+    }
+]
