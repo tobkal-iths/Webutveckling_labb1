@@ -3,18 +3,18 @@ const courses = [];
 const cart = [];
 
 // Classes
-class course {
-    constructor(id, title, img, imgalt, pitch, info, length, price, active, purchases) {
-        this.id = id;
-        this.title = title;
-        this.img = img;
-        this.imgalt = imgalt;
-        this.pitch = pitch;
-        this.info = info;
-        this.length = length;
-        this.price = price;
-        this.active = active;
-        this.purchases = purchases;
+class Course {
+    constructor(object) {
+        this.id = object.id;
+        this.title = object.title;
+        this.img = object.img;
+        this.imgalt = object.imgalt;
+        this.pitch = object.pitch;
+        this.info = object.info;
+        this.length = object.length;
+        this.price = object.price;
+        this.active = object.active;
+        this.purchases = object.purchases;
     }
 }
 
@@ -41,7 +41,7 @@ async function loadCourses() {
 
 function jsonToCourses(json) {
     for (let i = 0; i < json.length; i++) {
-        courses.push(json[i]);
+        courses.push(new Course(json[i]));
     }
 }
 
@@ -60,7 +60,7 @@ async function navigate(path, callback1 = null, callback2 = null) {
 //Make popular course cards
 function makePopularCards() {
     let html = '';
-    let tmp = courses.sort(function(a, b){return b.purchases-a.purchases}).slice(0, 3);
+    let tmp = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3);
     for (let i = 0; i < tmp.length; i++) {
         html += makeCourseCard(tmp[i]);
     }
@@ -104,8 +104,8 @@ function makeCartItem(id) {
     return `
     <div class="cart-item">
         <p>${course.title}</p>
-        <p>${course.price}</p>
-        <button class="cart-btn" onclick="removeCourseFromCart(${id})" type="button">Ta bort från kundvagn</button>
+        <p>${course.price} spänn</p>
+        <button class="cart-btn" onclick="removeCourseFromCart(${id})" type="button">Ta bort</button>
     </div>`;
 }
 
@@ -144,4 +144,10 @@ function finalizePurchase() {
     updateCartText();
     makeCartItems();
     alert('Tack för köpet!');
+}
+
+// ModalAccept
+
+function modalAccept(message) {
+    alert(message);
 }

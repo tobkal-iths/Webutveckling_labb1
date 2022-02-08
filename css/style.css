@@ -294,6 +294,7 @@ a:hover {
     height: 100%;
     margin: -1% 0% 0% 0%;
     line-height: 0.7;
+    user-select: none;
 }
 
 .logotype .logo-frame .logo-text div {
@@ -591,14 +592,29 @@ a:hover {
     margin: 1%;
     padding: 1%;
     font-size: 1em;
-    color: var(--background);
     border-radius: 5px;
+    color: var(--background);
     background-color: var(--primary);
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 50% 35% 15%;
+}
+
+.cart-item p {
+    padding: 0%;
+    margin: auto 3em auto auto;
+}
+
+.cart-item p:first-of-type {
+    margin: auto auto auto 0;
 }
 
 .cart-item .cart-btn {
+    cursor: pointer;
+    padding: 2%;
+    margin: auto 0 auto;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: darkred;
     background-color: red;
 }
 
@@ -689,6 +705,116 @@ a:hover {
 }
 
 
+
+/*****************/
+/*     MODAL     */
+/*****************/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: var(--secondary);
+    margin: auto;
+    padding: 0%;
+    border: 1px solid var(--background);
+    width: 85%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.modal-header,
+.modal-footer {
+    color: var(--background);
+    padding: 2px 16px;
+    background-color: var(--primary);
+}
+
+.modal-header {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+}
+
+.modal-header h2 {
+    margin: 1%;
+}
+
+/* The Close Button */
+.close {
+    color: var(--background);
+    align-self: flex-end;
+    margin: auto 0% auto auto;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--muted-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    color: var(--light);
+    padding: 2px 16px;
+}
+
+.modal-body > *{
+    margin: 1% 15%;
+    padding: 0%;
+}
+
+.modal-body .modal-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body .modal-input-container input.checkbox {
+    align-self: flex-start;
+}
+
+.modal-footer > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-footer > button{
+    margin: auto;
+    padding: 1%;
+}
 
 /*****************/
 /* MEDIA QUERIES */
@@ -819,7 +945,7 @@ Extra large devices (large laptops and desktops, 1200px and up)
 
     .card {
         margin: 1em 0.2em;
-        padding: 0.1em;
+        padding: 0.5em;
     }
 
     .card > h1 {

@@ -18,6 +18,53 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add new course:</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-input-container">
+                    <label for="modalInputTitle" class="modal-input-label">Title:</label>
+                    <input id="modalInputTitle" class="modal-input" type="text" placeholder="Course title">
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputImg" class="modal-input-label">Image path:</label>
+                    <input id="modalInputImg" class="modal-input" type="url" placeholder="Path to image">
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputImgalt" class="modal-input-label">Image alt text:</label>
+                    <input id="modalInputImgalt" class="modal-input" type="text" placeholder="Alt text for image">
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputPitch" class="modal-input-label">Pitch text:</label>
+                    <textarea id="modalInputPitch" class="modal-input" cols="3" rows="6" placeholder="Course pitch"></textarea>
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputInfo" class="modal-input-label">Info text:</label>
+                    <textarea id="modalInputInfo" class="modal-input" cols="3" rows="6" placeholder="Course info summary"></textarea>
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputLength" class="modal-input-label">Length (weeks):</label>
+                    <input id="modalInputLength" class="modal-input" type="number" min="1" max="52" value="1">
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputPrice" class="modal-input-label">Price (Spänn):</label>
+                    <input id="modalInputPrice" class="modal-input" type="number" value="49" min="0">
+                </div>
+                <div class="modal-input-container">
+                    <label for="modalInputActive" class="modal-input-label">Active:</label>
+                    <input id="modalInputActive" class="modal-input checkbox" type="checkbox">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="card-btn" id="modalAcceptBtn" onclick="modalAccept('Message in a bottle')">Accept</button>
+            </div>
+        </div>
+    </div>
     <div class="main-container">
         <!-- Logotype -->
         <section class="logotype">
@@ -48,7 +95,7 @@
                     <li><button class="nav-btn" onclick="navigate('pages/start.html')">Kontakt</button></li>
                     <li><button class="nav-btn" onclick="navigate('pages/start.html')">Om oss</button></li>
                     <li><button class="nav-btn" onclick="navigate('pages/cart.html', makeCartItems)" id="cart-btn">Kundvagn (0)</button></li>
-                    <li><button class="nav-btn" type="button" onclick="addNewCourse()">Administratör</button></li>
+                    <li><button class="nav-btn" type="button" id="adminBtn">Administratör</button></li>
                 </ul>
             </nav>
         </section>
@@ -119,5 +166,7 @@
         </div>
     </div>
     <script src="script/script.js"></script>
+    <script src="script/modal.js"></script>
+</body>
 </body>
 </html>
