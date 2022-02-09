@@ -585,8 +585,20 @@ a:hover {
 }
 
 /*****************/
-/* CARDS */
+/* CART */
 /*****************/
+
+.cart-container {
+    padding: 1em;
+    border-radius: 5px;
+    background-color: var(--background);
+    min-height: 3em;
+}
+
+.cart-list {
+    margin: 0%;
+    padding: 0%;
+}
 
 .cart-item {
     margin: 1%;
@@ -616,6 +628,10 @@ a:hover {
     border-style: solid;
     border-color: darkred;
     background-color: red;
+}
+
+.cart-accept {
+    margin-top: 1em;
 }
 
 /*****************/
