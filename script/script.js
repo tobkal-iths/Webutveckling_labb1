@@ -113,9 +113,9 @@ function makeCartItem(id) {
 function addCourseToCart(id) {
     if (cart.includes(id)) {
         alert('Du har redan lagt till den kursen i kundvagnen.');
-    } else {
-        cart.push(id);
+        return;
     }
+    cart.push(id);
     updateCartText();
 }
 
