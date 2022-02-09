@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <!-- Title -->
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Westcoast Education</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,8 +17,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Title -->
-    <title>Westcoast Education</title>
+    <!-- Scripts -->
+    <script src="script/script.js" defer></script>
+    <script src="script/modal.js" defer></script>
 </head>
 <body>
     <!-- The Modal -->
@@ -53,11 +57,11 @@
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputPrice" class="modal-input-label">Price (Spänn):</label>
-                    <input id="modalInputPrice" class="modal-input" type="number" value="49" min="0">
+                    <input id="modalInputPrice" class="modal-input" type="number" value="0" min="0">
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputActive" class="modal-input-label">Active:</label>
-                    <input id="modalInputActive" class="modal-input checkbox" type="checkbox">
+                    <input id="modalInputActive" class="modal-input checkbox" type="checkbox" value="active" checked>
                 </div>
             </div>
             <div class="modal-footer">
@@ -165,8 +169,6 @@
             </div>
         </div>
     </div>
-    <script src="script/script.js"></script>
-    <script src="script/modal.js"></script>
 </body>
 </body>
 </html>
