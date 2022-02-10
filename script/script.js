@@ -27,9 +27,7 @@ onload = function() {
 
 // Load courses
 async function loadCourses() {
-    let response = await fetch('json/courses.json')
-    console.log(response)
-
+    let response = await fetch('assets/json/courses.json')
     if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
         let json = await response.json()
@@ -147,7 +145,6 @@ function finalizePurchase() {
 }
 
 // ModalAccept
-
 function modalAccept(message) {
     // Get data from modal
     const modal = document.getElementById("myModal")
@@ -164,7 +161,7 @@ function modalAccept(message) {
     let courseObj = {
         id: courses.length + 1,
         title: title.value != "" ? title.value : "Ny kurs",
-        img: img.value != "" ? img.value : "img/placeholder.avif",
+        img: img.value != "" ? img.value : "assets/avif/placeholder.avif",
         imgalt: imgalt.value,
         pitch: pitch.value != "" ? pitch.value : "Den här kursen saknar beskrivning!",
         info: info.value != "" ? info.value : "",
@@ -194,3 +191,9 @@ function modalAccept(message) {
     makePopularCards();
     makeActiveCards();
 }
+
+// // ModalAccept
+// function modalAccept() {
+//     const form = document.getElementById("modalForm")
+//     console.log(form.submit())
+// }

@@ -25,7 +25,7 @@
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <form class="modal-content" id="modalForm">
             <div class="modal-header">
                 <h2>Add new course:</h2>
                 <span class="close">&times;</span>
@@ -33,7 +33,7 @@
             <div class="modal-body">
                 <div class="modal-input-container">
                     <label for="modalInputTitle" class="modal-input-label">Title:</label>
-                    <input id="modalInputTitle" class="modal-input" type="text" placeholder="Course title">
+                    <input id="modalInputTitle" class="modal-input" type="text" placeholder="Course title" required>
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputImg" class="modal-input-label">Image path:</label>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputPitch" class="modal-input-label">Pitch text:</label>
-                    <textarea id="modalInputPitch" class="modal-input" cols="3" rows="6" placeholder="Course pitch"></textarea>
+                    <textarea id="modalInputPitch" class="modal-input" cols="3" rows="6" placeholder="Course pitch" required></textarea>
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputInfo" class="modal-input-label">Info text:</label>
@@ -53,11 +53,11 @@
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputLength" class="modal-input-label">Length (weeks):</label>
-                    <input id="modalInputLength" class="modal-input" type="number" min="1" max="52" value="1">
+                    <input id="modalInputLength" class="modal-input" type="number" min="1" max="52" value="1" required>
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputPrice" class="modal-input-label">Price (Spänn):</label>
-                    <input id="modalInputPrice" class="modal-input" type="number" value="0" min="0">
+                    <input id="modalInputPrice" class="modal-input" type="number" value="0" min="0" required>
                 </div>
                 <div class="modal-input-container">
                     <label for="modalInputActive" class="modal-input-label">Active:</label>
@@ -65,9 +65,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="card-btn" id="modalAcceptBtn" onclick="modalAccept('Message in a bottle')">Accept</button>
+                <input type="button" value="Submit" class="card-btn" id="modalAcceptBtn" onclick="modalAccept()"></button>
             </div>
-        </div>
+        </form>
     </div>
     <div class="main-container">
         <!-- Logotype -->
@@ -86,7 +86,7 @@
             <nav class="navbar">
                 <div>
                     <button type="button" class="home-btn" onclick="navigate('pages/start.html')">
-                        <img src="img/house-fill.svg" alt="House icon" class="home-icon">
+                        <img src="assets/svg/house-fill.svg" alt="House icon" class="home-icon">
                     </button>
                 </div>
                 <input id="menu-toggle" type="checkbox" />

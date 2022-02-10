@@ -825,13 +825,8 @@ a:hover {
     align-self: flex-start;
 }
 
-.modal-footer > button{
+.modal-footer > .card-btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-footer > button{
     margin: auto;
     padding: 1%;
 }
