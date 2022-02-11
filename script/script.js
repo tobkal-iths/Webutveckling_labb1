@@ -57,35 +57,112 @@ async function navigate(path, callback1 = null, callback2 = null) {
 
 //Make popular course cards
 function makePopularCards() {
-    let html = ''
-    let tmp = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
-    for (let i = 0; i < tmp.length; i++) {
-        html += makeCourseCard(tmp[i])
-    }
-    document.getElementById('popular-cards').innerHTML = html
+    const parent = document.getElementById('popular-cards')
+    clearChildren(parent)
+    const array = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
+    if(array.length > 0) makeCourseCards(parent, array)
 }
 
 //Make active course cards
 function makeActiveCards() {
-    let html = ''
+    const parent = document.getElementById('active-cards')
+    clearChildren(parent)
+    const array = []
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].active) html += makeCourseCard(courses[i])
+        if(courses[i].active) array.push(courses[i])
     }
-    document.getElementById('active-cards').innerHTML = html
+    if(array.length > 0) makeCourseCards(parent, array)
 }
 
-//Make course card
-function makeCourseCard(course) {
-    return `<div class="card">
-        <h1>${course.title}</h1>
-        <p class="card-length">Kurslängd: ${course.length} veckor.</p>
-        <img src="${course.img}" alt="${course.imgalt}">
-        <h2>${course.pitch}</h2>
-        <p>${course.info}</p>
-        <button class="card-btn" onclick="addCourseToCart(${course.id})" type="button" ${course.active ? '>Köp' : 'disabled>Ej tillgänglig'}</button>
-        <p class="card-signature">fr. ${course.price} spänn</p>
-    </div>`
+//Clear children from parent
+function clearChildren(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.lastChild);
+    }
 }
+
+function makeCourseCards(parent, array) {
+    for (let i = 0; i < array.length; i++) {
+        // Create card
+        const card = document.createElement("div")
+        card.setAttribute("class", "card")
+
+        // Create title and add to card
+        const title = document.createElement("h1")
+        title.innerText = array[i].title
+        card.appendChild(title)
+
+        // Create length paragraph and add to card
+        const lengthPara = document.createElement("p")
+        lengthPara.innerText = `Kurslängd: ${array[i].length} veckor.`
+        card.appendChild(lengthPara)
+
+        // Create image and add to card
+        const img = document.createElement("img")
+        img.alt = array[i].imgalt
+        img.src = array[i].img
+        card.appendChild(img)
+
+        // Create pitch and add to card
+        const pitch = document.createElement("h2")
+        pitch.innerText = array[i].pitch
+        card.appendChild(pitch)
+
+        // Create info and add to card
+        const info = document.createElement("p")
+        info.innerText = array[i].info
+        card.appendChild(info)
+
+        // Create button and add to card
+        const btn = document.createElement("button")
+        btn.setAttribute("class", "card-btn")
+        btn.onclick = `addCourseToCart(${array[i].id})`
+        btn.type = "button"
+        btn.disabled = !array[i].active
+        btn.innerText = array[i].active ? "Köp" : "Ej tillgänglig"
+        card.appendChild(btn)
+
+        // Create price paragraph and add to card
+        const price = document.createElement("p")
+        price.innerText =`fr. ${array[i].price} spänn.`
+        card.appendChild(price)
+
+        //Add card to parent
+        parent.appendChild(card)
+    }
+}
+
+// //Make popular course cards
+// function makePopularCards() {
+//     let html = ''
+//     let tmp = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
+//     for (let i = 0; i < tmp.length; i++) {
+//         html += makeCourseCard(tmp[i])
+//     }
+//     document.getElementById('popular-cards').innerHTML = html
+// }
+
+// //Make active course cards
+// function makeActiveCards() {
+//     let html = ''
+//     for (let i = 0; i < courses.length; i++) {
+//         if (courses[i].active) html += makeCourseCard(courses[i])
+//     }
+//     document.getElementById('active-cards').innerHTML = html
+// }
+
+// //Make course card
+// function makeCourseCard(course) {
+//     return `<div class="card">
+//         <h1>${course.title}</h1>
+//         <p class="card-length">Kurslängd: ${course.length} veckor.</p>
+//         <img src="${course.img}" alt="${course.imgalt}">
+//         <h2>${course.pitch}</h2>
+//         <p>${course.info}</p>
+//         <button class="card-btn" onclick="addCourseToCart(${course.id})" type="button" ${course.active ? '>Köp' : 'disabled>Ej tillgänglig'}</button>
+//         <p class="card-signature">fr. ${course.price} spänn</p>
+//     </div>`
+// }
 
 //Make cart items
 function makeCartItems() {
