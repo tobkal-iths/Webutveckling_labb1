@@ -81,6 +81,7 @@ function clearChildren(parent) {
     }
 }
 
+// Make course cards
 function makeCourseCards(parent, array) {
     for (let i = 0; i < array.length; i++) {
         // Create card
@@ -116,14 +117,15 @@ function makeCourseCards(parent, array) {
         // Create button and add to card
         const btn = document.createElement("button")
         btn.setAttribute("class", "card-btn")
-        btn.onclick = `addCourseToCart(${array[i].id})`
-        btn.type = "button"
+        btn.setAttribute("onclick", `addCourseToCart(${array[i].id})`)
+        btn.setAttribute("type", "button")
         btn.disabled = !array[i].active
         btn.innerText = array[i].active ? "Köp" : "Ej tillgänglig"
         card.appendChild(btn)
 
         // Create price paragraph and add to card
         const price = document.createElement("p")
+        price.setAttribute("class", "card-signature")
         price.innerText =`fr. ${array[i].price} spänn.`
         card.appendChild(price)
 
@@ -132,57 +134,39 @@ function makeCourseCards(parent, array) {
     }
 }
 
-// //Make popular course cards
-// function makePopularCards() {
-//     let html = ''
-//     let tmp = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
-//     for (let i = 0; i < tmp.length; i++) {
-//         html += makeCourseCard(tmp[i])
-//     }
-//     document.getElementById('popular-cards').innerHTML = html
-// }
-
-// //Make active course cards
-// function makeActiveCards() {
-//     let html = ''
-//     for (let i = 0; i < courses.length; i++) {
-//         if (courses[i].active) html += makeCourseCard(courses[i])
-//     }
-//     document.getElementById('active-cards').innerHTML = html
-// }
-
-// //Make course card
-// function makeCourseCard(course) {
-//     return `<div class="card">
-//         <h1>${course.title}</h1>
-//         <p class="card-length">Kurslängd: ${course.length} veckor.</p>
-//         <img src="${course.img}" alt="${course.imgalt}">
-//         <h2>${course.pitch}</h2>
-//         <p>${course.info}</p>
-//         <button class="card-btn" onclick="addCourseToCart(${course.id})" type="button" ${course.active ? '>Köp' : 'disabled>Ej tillgänglig'}</button>
-//         <p class="card-signature">fr. ${course.price} spänn</p>
-//     </div>`
-// }
-
 //Make cart items
 function makeCartItems() {
-    let html = '';
-    if(cart.length < 1) html = 'Kundvagnen är tom...'
+    const parent = document.getElementById('cart-list')
+    clearChildren(parent)
+    if(cart.length < 1) parent.innerText = 'Kundvagnen är tom...'
     for (let i = 0; i < cart.length; i++) {
-        html += makeCartItem(cart[i]);
-    }
-    document.getElementById('cart-list').innerHTML = html
-}
+        // Hur nullcheckar jag det här?
+        const course = courses.find(c => c.id === cart[i])
 
-//Make cart item
-function makeCartItem(id) {
-    let course = courses.find(c => c.id === id)
-    return `
-    <div class="cart-item">
-        <p>${course.title}</p>
-        <p>${course.price} spänn</p>
-        <button class="cart-btn" onclick="removeCourseFromCart(${id})" type="button">Ta bort</button>
-    </div>`
+        // Make item
+        const item = document.createElement("div")
+        item.setAttribute("class", "cart-item")
+
+        // Make title
+        const title = document.createElement("p")
+        title.innerText = course.title
+        item.appendChild(title)
+
+        // Make title
+        const price = document.createElement("p")
+        price.innerText = `${course.price} spänn.`
+        item.appendChild(price)
+
+        // Create button and add to card
+        const btn = document.createElement("button")
+        btn.setAttribute("class", "cart-btn")
+        btn.setAttribute("onclick", `removeCourseFromCart(${course.id})`)
+        btn.setAttribute("type", "button")
+        btn.innerText = "Ta bort"
+        item.appendChild(btn)
+
+        parent.appendChild(item)
+    }
 }
 
 // Add course to cart
@@ -209,12 +193,18 @@ function updateCartText() {
     document.getElementById('cart-btn').innerHTML = `Kundvagn (${cart.length})`
 }
 
+function updateShopButton() {
+    const btn = document.getElementById("cart-accept-btn")
+    btn.style.display = cart.length > 0 ? "inline-block" : "none"
+}
+
 // Finalize purchase
 function finalizePurchase() {
     cart.splice(0, cart.length)
     updateCartText()
     makeCartItems()
     alert('Tack för köpet!')
+    updateShopButton()
 }
 
 // ModalAccept
