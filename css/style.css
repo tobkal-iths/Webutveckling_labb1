@@ -673,6 +673,9 @@ a:hover {
 /*****************/
 
 .cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.1em;
     border-radius: 5px;
     background-color: var(--background);
@@ -682,6 +685,8 @@ a:hover {
 .cart-list {
     margin: 0%;
     padding: 0%;
+    width: 100%;
+    height: 100%;
 }
 
 .cart-item {

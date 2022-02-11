@@ -90,6 +90,7 @@ function makeCourseCard(course) {
 //Make cart items
 function makeCartItems() {
     let html = '';
+    if(cart.length < 1) html = 'Kundvagnen är tom...'
     for (let i = 0; i < cart.length; i++) {
         html += makeCartItem(cart[i]);
     }
