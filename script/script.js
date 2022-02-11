@@ -131,14 +131,9 @@ function updateCartText() {
     document.getElementById('cart-btn').innerHTML = `Kundvagn (${cart.length})`
 }
 
-// Add course to cart
-function addNewCourse() {
-    alert('Lägg till ny kurs')
-}
-
-// Add course to cart
+// Finalize purchase
 function finalizePurchase() {
-    cart.length = 0
+    cart.splice(0, cart.length)
     updateCartText()
     makeCartItems()
     alert('Tack för köpet!')

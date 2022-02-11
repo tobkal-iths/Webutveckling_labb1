@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Favicons -->
+
     <!-- Title -->
     <title>Westcoast Education</title>
 
@@ -73,6 +75,7 @@
         <!-- Logotype -->
         <section class="logotype">
             <div class="logo-frame">
+                <a href="#" onclick="navigate('pages/start.html')"><span></span></a>
                 <div class="logo-line"></div>
                 <div class="logo-text">
                     <div class="col-white">Westcoast</div>
@@ -95,9 +98,8 @@
                 </label>
                 <ul class="menu">
                     <li><button class="nav-btn" onclick="navigate('pages/courses.html', makeActiveCards, makePopularCards)">Kurser</button></li>
-                    <li><button class="nav-btn" onclick="navigate('pages/start.html')">Nyheter</button></li>
-                    <li><button class="nav-btn" onclick="navigate('pages/start.html')">Kontakt</button></li>
-                    <li><button class="nav-btn" onclick="navigate('pages/start.html')">Om oss</button></li>
+                    <li><button class="nav-btn" onclick="navigate('pages/contact.html')">Kontakt</button></li>
+                    <li><button class="nav-btn" onclick="navigate('pages/about.html')">Om oss</button></li>
                     <li><button class="nav-btn" onclick="navigate('pages/cart.html', makeCartItems)" id="cart-btn">Kundvagn (0)</button></li>
                     <li><button class="nav-btn" type="button" id="adminBtn">Administratör</button></li>
                 </ul>
@@ -122,48 +124,22 @@
         </div>
         <div class="footer">
             <div class="footer-body">
-                <ul>
-                    <p>Kurser</p>
-                    <li>
-                        <a href="#">Kurs1</a>
-                    </li>
-                    <li>
-                        <a href="#">Kurs2</a>
-                    </li>
-                    <li>
-                        <a href="#">Kurs3</a>
-                    </li>
-                </ul>
-                <ul>
-                    <p>Om oss</p>
-                    <li>
-                        <a href="#">Vad?</a>
-                    </li>
-                    <li>
-                        <a href="#">Hur?</a>
-                    </li>
-                    <li>
-                        <a href="#">Varför?</a>
-                    </li>
-                </ul>
-                <ul>
-                    <p>Kontakt</p>
-                    <li>
-                        <p>E-post:</p>
-                        <p>info@westcoast-education.se</p>
-                    </li>
-                    <li>
-                        <p>Tel:</p>
-                        <p>(+46)12-345 67 89</p>
-                    </li>
-                    <li>
-                        <p>Adress:</p>
-                        <p>Gatuvägen 1</p>
-                        <p>1234 56 Bysta</p>
-                        <a href="#">Se på karta</a>
-                    </li>
-                </ul>
+                <div class="footer-section">
+                    <h5>E-post:</h5>
+                    <p>info@westcoast-education.se</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Tel:</h5>
+                    <p>(+46)12-345 67 89</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Adress:</h5>
+                    <p>Gatuvägen 1</p>
+                    <p>1234 56 Bysta</p>
+                    <a href="https://goo.gl/maps/1aKRMmYmYmwynb2c7" target="_blank" rel="noopener noreferrer">Se på karta</a>
+                </div>
             </div>
+            <img src="assets/svg/mortarboard.svg" alt="Mortarboard icon">
             <div class="footer-footer">
                 <p class="text-small">Westcoast Education AB © 2022 All rights reserved.</p>
             </div>
