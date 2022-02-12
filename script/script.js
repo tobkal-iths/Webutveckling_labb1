@@ -193,9 +193,21 @@ function updateCartText() {
     document.getElementById('cart-btn').innerHTML = `Kundvagn (${cart.length})`
 }
 
-function updateShopButton() {
-    const btn = document.getElementById("cart-accept-btn")
-    btn.style.display = cart.length > 0 ? "inline-block" : "none"
+function updateCheckoutElements() {
+    const checkout = document.getElementById("checkout")
+    checkout.style.display = cart.length > 0 ? "grid" : "none"
+
+    if (checkout.style.display === "grid") document.getElementById("total-count").innerText = `Total: ${getCartTotalPrice()} spänn`
+}
+
+// Get total price of items in cart
+function getCartTotalPrice() {
+    let total = 0
+    for (let i = 0; i < cart.length; i++) {
+        const course = courses.find(c => c.id === cart[i])
+        total += course.price
+    }
+    return total
 }
 
 // Finalize purchase
@@ -203,8 +215,8 @@ function finalizePurchase() {
     cart.splice(0, cart.length)
     updateCartText()
     makeCartItems()
+    updateCheckoutElements()
     alert('Tack för köpet!')
-    updateShopButton()
 }
 
 // ModalAccept
