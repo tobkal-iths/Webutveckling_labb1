@@ -203,7 +203,7 @@ function updateCheckoutElements() {
 
 // Get total price of items in cart
 function getCartTotalPrice() {
-    let total = 0.0
+    let total = 0
     for (let i = 0; i < cart.length; i++) {
         const price = courses.find(c => c.id === cart[i]).price
         console.log(price)
