@@ -676,6 +676,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;
     padding: 0.1em;
     border-radius: 5px;
     background-color: var(--background);
@@ -683,8 +684,8 @@ a:hover {
 }
 
 .cart-list {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
 }

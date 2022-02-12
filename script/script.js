@@ -185,6 +185,7 @@ function removeCourseFromCart(id) {
         cart.splice(cart.indexOf(id), 1)
         updateCartText()
         makeCartItems()
+        updateCheckoutElements()
     }
 }
 
@@ -197,15 +198,17 @@ function updateCheckoutElements() {
     const checkout = document.getElementById("checkout")
     checkout.style.display = cart.length > 0 ? "grid" : "none"
 
-    if (checkout.style.display === "grid") document.getElementById("total-count").innerText = `Total: ${getCartTotalPrice()} spänn`
+    document.getElementById("total-count").innerText = `Total: ${getCartTotalPrice()} spänn`
 }
 
 // Get total price of items in cart
 function getCartTotalPrice() {
-    let total = 0
+    let total = 0.0
     for (let i = 0; i < cart.length; i++) {
-        const course = courses.find(c => c.id === cart[i])
-        total += course.price
+        const price = courses.find(c => c.id === cart[i]).price
+        console.log(price)
+        if (price === NaN) price = 0
+        total += Number(price)
     }
     return total
 }
