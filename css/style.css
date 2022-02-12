@@ -818,6 +818,11 @@ a:hover {
     filter: opacity(50%);
 }
 
+.footer p.text-bold {
+    font-family: 'Rokkitt', serif;
+    font-size: 1.2em;
+}
+
 .footer a:hover {
     color: var(--primary);
 }
