@@ -104,11 +104,6 @@ function makeCourseCards(parent, array) {
         card.appendChild(lengthPara)
 
         // Create picture and add to card
-
-        // <picture>
-        // <source type="image/avif" srcset="cow.avif" />
-        // <img src="cow.png" alt="Cow" />
-        // </picture>
         const picture = document.createElement("picture")
         
         if (array[i].imgavif) {
