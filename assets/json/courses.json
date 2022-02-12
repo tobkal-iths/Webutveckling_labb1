@@ -2,7 +2,8 @@
     {
         "id": 1,
         "title": "Göteborgs-humor",
-        "img": "assets/avif/course1.avif",
+        "imgavif": "assets/avif/course1.avif",
+        "imgpng": "assets/png/course1.png",
         "imgalt": "Göteborgs centralstation",
         "pitch": "Har du svårt att förstå vem \"Kal\" är eller hur du hittar till \"Ackordcentralen\"?",
         "info": "En kurs i elva lektioner som går igenom allt ifrån den klassiska \"Göteborgsvitsen\" till hur du på äkta Göteborg-manér kan klämma ur dig fyndiga namn på det mesta.",
@@ -14,7 +15,8 @@
     {
         "id": 2,
         "title": "Lär dig tala som en öbo",
-        "img": "assets/avif/course2.avif",
+        "imgavif": "assets/avif/course2.avif",
+        "imgpng": "assets/png/course2.png",
         "imgalt": "Bohusläns skärgård",
         "pitch": "En kurs för dig som älskar havet men avskyr hårda konsonanter.",
         "info": "Kursen kommer i fem episoder där varje del riktar in sig på en av de fem pelarna av den bohuslänska dialekten: Uttal, betoning, känsla, stil och kroppsspråk.",
@@ -26,7 +28,8 @@
     {
         "id": 3,
         "title": "Hyfs",
-        "img": "assets/avif/course3.avif",
+        "imgavif": "assets/avif/course3.avif",
+        "imgpng": "assets/png/course3.png",
         "imgalt": "Stilig man i mustasch",
         "pitch": "Har du svårt att uppföra dig som en normalt funtad människa?",
         "info": "I den här kursen får du lära dig allt från hur man äter med bestick till varför man inte bör tränga sig före i kassakön.",
@@ -38,7 +41,8 @@
     {
         "id": 4,
         "title": "Testkurs 1",
-        "img": "assets/avif/placeholder.avif",
+        "imgavif": "assets/avif/placeholder.avif",
+        "imgpng": "assets/png/placeholder.png",
         "imgalt": "Placeholder",
         "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
         "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",
@@ -50,7 +54,8 @@
     {
         "id": 5,
         "title": "Testkurs 2",
-        "img": "assets/avif/placeholder.avif",
+        "imgavif": "assets/avif/placeholder.avif",
+        "imgpng": "assets/png/placeholder.png",
         "imgalt": "Placehodler",
         "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
         "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",
@@ -62,7 +67,8 @@
     {
         "id": 6,
         "title": "Testkurs 3",
-        "img": "assets/avif/placeholder.avif",
+        "imgavif": "assets/avif/placeholder.avif",
+        "imgpng": "assets/png/placeholder.png",
         "imgalt": "Placeholder",
         "pitch": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
         "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non perferendis iure temporibus vero tempore error! Enim fugiat provident at.",

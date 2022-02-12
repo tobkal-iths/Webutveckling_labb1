@@ -7,7 +7,8 @@ class Course {
     constructor(object) {
         this.id = object.id
         this.title = object.title
-        this.img = object.img
+        this.imgavif = object.imgavif
+        this.imgpng = object.imgpng
         this.imgalt = object.imgalt
         this.pitch = object.pitch
         this.info = object.info
@@ -102,11 +103,26 @@ function makeCourseCards(parent, array) {
         lengthPara.innerText = `Kurslängd: ${array[i].length} veckor.`
         card.appendChild(lengthPara)
 
-        // Create image and add to card
+        // Create picture and add to card
+
+        // <picture>
+        // <source type="image/avif" srcset="cow.avif" />
+        // <img src="cow.png" alt="Cow" />
+        // </picture>
+        const picture = document.createElement("picture")
+        
+        if (array[i].imgavif) {
+            const avif = document.createElement("source")
+            avif.type = "image/avif"
+            avif.srcset = array[i].imgavif
+            picture.appendChild(avif)
+        }
         const img = document.createElement("img")
-        img.alt = array[i].imgalt
-        img.src = array[i].img
-        card.appendChild(img)
+        img.src = array[i].imgpng
+        if (array[i].imgalt) img.alt = array[i].imgalt
+        picture.appendChild(img)
+
+        card.appendChild(picture)
 
         // Create pitch and add to card
         const pitch = document.createElement("h2")
@@ -231,7 +247,8 @@ function modalAccept(message) {
     // Get data from modal
     const modal = document.getElementById("myModal")
     const title = document.getElementById("modalInputTitle")
-    const img = document.getElementById("modalInputImg")
+    const imgavif = document.getElementById("modalInputImgavif")
+    const imgpng = document.getElementById("modalInputImgpng")
     const imgalt = document.getElementById("modalInputImgalt")
     const pitch = document.getElementById("modalInputPitch")
     const info = document.getElementById("modalInputInfo")
@@ -249,7 +266,8 @@ function modalAccept(message) {
         let courseObj = {
             id: courses.length + 1,
             title: title.value != "" ? title.value : "Ny kurs",
-            img: img.value != "" ? img.value : "assets/avif/placeholder.avif",
+            imgavif: imgavif.value,
+            imgpng: imgpng.value,
             imgalt: imgalt.value,
             pitch: pitch.value != "" ? pitch.value : "Den här kursen saknar beskrivning!",
             info: info.value != "" ? info.value : "",
@@ -270,7 +288,8 @@ function modalAccept(message) {
 
     // Reset modal values
     title.value = ""
-    img.value = ""
+    imgavif.value = ""
+    imgpng.value = ""
     imgalt.value = ""
     pitch.value = ""
     info.value = ""

@@ -30,7 +30,8 @@ window.onclick = function(event) {
 function reset() {
   // Reset modal values
   document.getElementById("modalInputTitle").value = ""
-  document.getElementById("modalInputImg").value = ""
+  document.getElementById("modalInputImgavif").value = ""
+  document.getElementById("modalInputImgpng").value = ""
   document.getElementById("modalInputImgalt").value = ""
   document.getElementById("modalInputPitch").value = ""
   document.getElementById("modalInputInfo").value = ""
