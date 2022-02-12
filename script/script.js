@@ -57,21 +57,25 @@ async function navigate(path, callback1 = null, callback2 = null) {
 
 //Make popular course cards
 function makePopularCards() {
-    const parent = document.getElementById('popular-cards')
-    clearChildren(parent)
-    const array = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
-    if(array.length > 0) makeCourseCards(parent, array)
+    if (document.getElementById('popular-cards')) {
+        const parent = document.getElementById('popular-cards')
+        clearChildren(parent)
+        const array = courses.sort(function(a, b) {return b.purchases-a.purchases}).slice(0, 3)
+        if(array.length > 0) makeCourseCards(parent, array)
+    }
 }
 
 //Make active course cards
 function makeActiveCards() {
-    const parent = document.getElementById('active-cards')
-    clearChildren(parent)
-    const array = []
-    for (let i = 0; i < courses.length; i++) {
-        if(courses[i].active) array.push(courses[i])
+    if (document.getElementById('active-cards')) {
+        const parent = document.getElementById('active-cards')
+        clearChildren(parent)
+        const array = []
+        for (let i = 0; i < courses.length; i++) {
+            if(courses[i].active) array.push(courses[i])
+        }
+        if(array.length > 0) makeCourseCards(parent, array)
     }
-    if(array.length > 0) makeCourseCards(parent, array)
 }
 
 //Clear children from parent
@@ -207,7 +211,7 @@ function getCartTotalPrice() {
     for (let i = 0; i < cart.length; i++) {
         const price = courses.find(c => c.id === cart[i]).price
         console.log(price)
-        if (price === NaN) price = 0
+        if (Number.isNaN(price)) price = 0
         total += Number(price)
     }
     return total
@@ -236,21 +240,33 @@ function modalAccept(message) {
     const active = document.getElementById("modalInputActive")
 
     // Make object from data
-    let courseObj = {
-        id: courses.length + 1,
-        title: title.value != "" ? title.value : "Ny kurs",
-        img: img.value != "" ? img.value : "assets/avif/placeholder.avif",
-        imgalt: imgalt.value,
-        pitch: pitch.value != "" ? pitch.value : "Den här kursen saknar beskrivning!",
-        info: info.value != "" ? info.value : "",
-        length: length.value !== NaN && length.value > 0 ? length.value : 1,
-        price: price.value !== NaN && price.value >= 0 ? price.value : 0,
-        active: active.checked,
-        purchases: 0
-    }
+    try {
+        console.log(length.value)
+        console.log(price.value)
 
-    // Instantiate class and add to course list
-    courses.push(new Course(courseObj))
+        // Add data verification and alerts?
+
+        let courseObj = {
+            id: courses.length + 1,
+            title: title.value != "" ? title.value : "Ny kurs",
+            img: img.value != "" ? img.value : "assets/avif/placeholder.avif",
+            imgalt: imgalt.value,
+            pitch: pitch.value != "" ? pitch.value : "Den här kursen saknar beskrivning!",
+            info: info.value != "" ? info.value : "",
+            length: parseInt(length.value) && parseInt(length.value) > 0 ? parseInt(length.value) : 1,
+            price: parseInt(price.value) && parseInt(price.value) >= 0 ? parseInt(price.value) : 0,
+            active: active.checked,
+            purchases: 0
+        }
+        console.log(courseObj.length)
+        console.log(courseObj.price)
+
+        // Instantiate class and add to course list
+        courses.push(new Course(courseObj))
+    }
+    catch(e) {
+        console.error(e.message)
+    }
 
     // Reset modal values
     title.value = ""
